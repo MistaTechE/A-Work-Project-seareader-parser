@@ -1,8 +1,24 @@
-# Sample GitLab Project
+RENAISSANCE REPORT PARSER
 
-This sample project shows how a project in GitLab looks for demonstration purposes. It contains issues, merge requests and Markdown files in many branches,
-named and filled with lorem ipsum.
+STEP 1:
+Download the Renaissance report.
 
-You can look around to get an idea how to structure your project and, when done, you can safely delete this project.
+STEP 2:
+Save it in this folder.
 
-[Learn more about creating GitLab projects.](https://docs.gitlab.com/ee/gitlab-basics/create-project.html)
+STEP 3:
+Rename the file exactly to:
+
+renaissance_report.pdf
+
+STEP 4:
+Double-click the student_parser app.
+
+OUTPUT FILES:
+- students_30_plus.csv
+- students_10_to_29_999.csv
+
+Students with:
+• 30.0 or more points → 30_plus file
+• 10.0 up to 29.999 → 10_to_29 file
+• Below 10 points → Not included
