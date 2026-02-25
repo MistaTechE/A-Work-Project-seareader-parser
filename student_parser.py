@@ -55,9 +55,18 @@ def extract_students(text):
     #     text
     # )
     # matches a variety of names
+    # pattern = re.findall(
+    #     r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-'\s]+?)"
+    #     r"\s+\d+%?\s+\d+%?\s+[\d.]+\s+([\d.]+)",
+    #     text
+    # )
+    # allow hyphen or percent or number
     pattern = re.findall(
-        r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-'\s]+?)"
-        r"\s+\d+%?\s+\d+%?\s+[\d.]+\s+([\d.]+)",
+        r"([A-Z][a-zA-Z\-']+,\s*[A-Za-z\-'\s]+?)"
+        r"\s+(?:\d+%?|-)+"          # first percent or dash
+        r"\s+(?:\d+%?|-)+"          # second percent or dash
+        r"\s+(?:[\d.]+|-)+"         # goal points or dash
+        r"\s+([\d.]+)",             # actual points (we capture this)
         text
     )
 
