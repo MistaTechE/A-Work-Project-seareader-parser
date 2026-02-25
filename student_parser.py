@@ -49,8 +49,14 @@ def clean_text(text):
 def extract_students(text):
 
     # Only match names that look like: Last, First
+    # pattern = re.findall(
+    #     r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-']+)"
+    #     r"\s+\d+%?\s+\d+%?\s+[\d.]+\s+([\d.]+)",
+    #     text
+    # )
+    # matches a variety of names
     pattern = re.findall(
-        r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-']+)"
+        r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-'\s]+?)"
         r"\s+\d+%?\s+\d+%?\s+[\d.]+\s+([\d.]+)",
         text
     )
