@@ -11,33 +11,57 @@ def clean_text(text):
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
+# def extract_students(text):
+#     # This pattern captures:
+#     # Name
+#     # Goal %
+#     # Actual %
+#     # Goal Points (30.0)
+#     # Actual Points (53.9, 51.6, etc.)
+#
+#     pattern = re.findall(
+#         r"([A-Za-z,\- ]+?)\s+\d+%\s+\d+%\s+([\d.]+)\s+([\d.]+)",
+#         text
+#     )
+#
+#     students = []
+#
+#     for row in pattern:
+#         full_name = row[0].strip()
+#         goal_points = float(row[1])
+#         actual_points = float(row[2])  # THIS is what we filter on
+#
+#         # Split Last, First
+#         if "," in full_name:
+#             last, first = full_name.split(",", 1)
+#         else:
+#             parts = full_name.split()
+#             first = parts[0]
+#             last = parts[-1]
+#
+#         students.append({
+#             "First Name": first.strip(),
+#             "Last Name": last.strip(),
+#             "Actual Points": actual_points
+#         })
+#
+#     return pd.DataFrame(students)
 def extract_students(text):
-    # This pattern captures:
-    # Name
-    # Goal %
-    # Actual %
-    # Goal Points (30.0)
-    # Actual Points (53.9, 51.6, etc.)
-    
+
+    # Only match names that look like: Last, First
     pattern = re.findall(
-        r"([A-Za-z,\- ]+?)\s+\d+%\s+\d+%\s+([\d.]+)\s+([\d.]+)",
+        r"([A-Z][a-zA-Z\-']+,\s*[A-Z][a-zA-Z\-']+)"
+        r"\s+\d+%?\s+\d+%?\s+[\d.]+\s+([\d.]+)",
         text
     )
 
     students = []
 
-    for row in pattern:
-        full_name = row[0].strip()
-        goal_points = float(row[1])
-        actual_points = float(row[2])  # THIS is what we filter on
+    for full_name, actual_points in pattern:
 
-        # Split Last, First
-        if "," in full_name:
-            last, first = full_name.split(",", 1)
-        else:
-            parts = full_name.split()
-            first = parts[0]
-            last = parts[-1]
+        actual_points = float(actual_points)
+
+        last, first = full_name.split(",", 1)
 
         students.append({
             "First Name": first.strip(),
