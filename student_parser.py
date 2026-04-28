@@ -45,7 +45,8 @@ def main():
         print("Make sure the PDF is saved in the same folder and named correctly.\n")
         sys.exit(1)
 
-    try: with pdfplumber.open(PDF_NAME) as pdf:
+    try: 
+        with pdfplumber.open(PDF_NAME) as pdf:
             full_text = ""
             for page in pdf.pages:
                 page_text = page.extract_text()
