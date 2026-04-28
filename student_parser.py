@@ -16,7 +16,7 @@ BASE_DIR = get_base_dir()
 os.chdir(BASE_DIR)
 
 PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
-OUTPUT_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = BASE_DIR
 
 def clean_text(text):
     text = text.replace("\n", " ")
@@ -53,7 +53,9 @@ def main():
     if not os.path.exists(PDF_NAME):
         print(f"\nERROR: '{PDF_NAME}' not found in this folder.")
         print("Make sure the PDF is saved in the same folder and named correctly.\n")
-        sys.exit(1)
+        #sys.exit(1)
+        messagebox.showerror("Error", "PDF not found")
+        return
 
 
     with pdfplumber.open(PDF_NAME) as pdf:
@@ -90,8 +92,10 @@ label.pack(pady=15)
 status_label = tk.Label(root, text="Processing report...\nPlease wait.")
 status_label.pack(pady=10)
 
-root.after(500, main)
+def start():
+    main()
 
+root.after(0, start)
 root.mainloop()
 
 
