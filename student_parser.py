@@ -68,11 +68,8 @@ def main():
             "CSV files created successfully!"
         )
 
-        root.destroy()
-
     except Exception as e:
         messagebox.showerror("Error", str(e))
-        root.destroy()
 
 # GUI Window
 root = tk.Tk()
