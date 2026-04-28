@@ -51,6 +51,9 @@ def main():
         print("Make sure the PDF is saved in the same folder and named correctly.\n")
         #sys.exit(1)
         messagebox.showerror("Error", "PDF not found")
+        messagebox.showerror("PDF_NAME:", PDF_NAME)
+        messagebox.showerror("CWD:", os.getcwd())
+        messagebox.showerror("EXISTS:", os.path.exists(PDF_NAME))
         return
 
 
