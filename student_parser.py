@@ -8,7 +8,7 @@ import sys
 
 BASE_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
 PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
-
+OUTPUT_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
 
 def clean_text(text):
     text = text.replace("\n", " ")
@@ -62,8 +62,8 @@ def main():
     df_30_plus = df[df["Actual Points"] >= 30.0]
     df_10_to_29 = df[(df["Actual Points"] >= 10.0) & (df["Actual Points"] < 30.0)]
 
-    df_30_plus.to_csv("students_30_plus.csv", index=False)
-    df_10_to_29.to_csv("students_10_to_29_999.csv", index=False)
+    df_30_plus.to_csv(os.path.join(OUTPUT_DIR, "students_30_plus.csv"), index=False)
+    df_10_to_29.to_csv(os.path.join(OUTPUT_DIR, "students_10_to_29_999.csv"), index=False)
 
     messagebox.showinfo(
         "Success",
