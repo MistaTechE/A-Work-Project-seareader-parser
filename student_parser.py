@@ -6,7 +6,15 @@ import pandas as pd
 import os
 import sys
 
-BASE_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
+
+def get_base_dir():
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(sys.executable)
+    return os.path.dirname(os.path.abspath(__file__))
+
+BASE_DIR = get_base_dir()
+os.chdir(BASE_DIR)
+
 PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
 OUTPUT_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
 
