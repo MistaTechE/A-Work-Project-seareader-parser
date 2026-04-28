@@ -6,11 +6,17 @@ import pandas as pd
 import os
 import sys
 
-BASE_DIR = os.path.dirname(os.path.realpath(sys.argv[0]))
-os.chdir(BASE_DIR)
+#BASE_DIR = os.path.dirname(os.path.realpath(sys.argv[0]))
+#os.chdir(BASE_DIR)
+#PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
 
+def get_base_dir():
+    if getattr(sys, "frozen", False):
+        return os.path.dirname(os.path.dirname(sys.executable))
+    return os.path.dirname(os.path.abspath(__file__))
+
+BASE_DIR = get_base_dir()
 PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
-
 
 OUTPUT_DIR = BASE_DIR
 
