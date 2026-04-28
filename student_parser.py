@@ -64,25 +64,29 @@ def main():
         df_10_to_29.to_csv("students_10_to_29_999.csv", index=False)
 
         messagebox.showinfo(
-                "Success",
-                "CSV files created successfully!"
-            )
+            "Success",
+            "CSV files created successfully!"
+        )
+
+        root.destroy()
 
     except Exception as e:
         messagebox.showerror("Error", str(e))
-
+        root.destroy()
 
 # GUI Window
 root = tk.Tk()
-root.title("Renaissance Reprt Parser")
+root.title("Renaissance Report Parser")
 root.geometry("300x150")
 root.resizable(False, False)
 
 label = tk.Label(root, text="Renaissance Report Parser", font=("Arial", 14))
 label.pack(pady=15)
 
-button = tk.Button(root, text="Run Parser", command=run_parser, width=20, height=2)
-button.pack(pady=10)
+status_label = tk.Label(root, text="Processing report...\nPlease wait.")
+status_label.pack(pady=10)
+
+root.after(500, main)
 
 root.mainloop()
 
