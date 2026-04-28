@@ -6,7 +6,9 @@ import pandas as pd
 import os
 import sys
 
-PDF_NAME = "renaissance_report.pdf"
+BASE_DIR = os.path.dirname(sys.executable) if getattr(sys, "frozen", False) else os.path.dirname(os.path.abspath(__file__))
+PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
+
 
 def clean_text(text):
     text = text.replace("\n", " ")
