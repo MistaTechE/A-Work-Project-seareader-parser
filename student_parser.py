@@ -5,20 +5,23 @@ import re
 import pandas as pd
 import os
 import sys
+from tkinter import filedialog
 
 #BASE_DIR = os.path.dirname(os.path.realpath(sys.argv[0]))
 #os.chdir(BASE_DIR)
 #PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
 
-def get_base_dir():
-    if getattr(sys, "frozen", False):
-        return os.path.dirname(os.path.dirname(sys.executable))
-    return os.path.dirname(os.path.abspath(__file__))
+#def get_base_dir():
+    #if getattr(sys, "frozen", False):
+        #return os.path.dirname(os.path.dirname(sys.executable))
+    #return os.path.dirname(os.path.abspath(__file__))
 
-BASE_DIR = get_base_dir()
-PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
+#BASE_DIR = get_base_dir()
+#PDF_NAME = os.path.join(BASE_DIR, "renaissance_report.pdf")
 
-OUTPUT_DIR = BASE_DIR
+#OUTPUT_DIR = BASE_DIR
+
+OUTPUT_DIR = os.path.expanduser("~/Desktop")
 
 def clean_text(text):
     text = text.replace("\n", " ")
@@ -52,14 +55,14 @@ def extract_students(text):
     return pd.DataFrame(students)
 
 def main():
-    if not os.path.exists(PDF_NAME):
-        print(f"\nERROR: '{PDF_NAME}' not found in this folder.")
-        print("Make sure the PDF is saved in the same folder and named correctly.\n")
+    #if not os.path.exists(PDF_NAME):
+        #print(f"\nERROR: '{PDF_NAME}' not found in this folder.")
+        #print("Make sure the PDF is saved in the same folder and named correctly.\n")
         #sys.exit(1)
-        messagebox.showerror("Error", "PDF not found")
-        messagebox.showerror("PDF_NAME:", PDF_NAME)
-        messagebox.showerror("CWD:", os.getcwd())
-        messagebox.showerror("EXISTS:", os.path.exists(PDF_NAME))
+        #messagebox.showerror("Error", "PDF not found")
+        #return
+    if not os.path.exists(PDF_NAME):
+        messagebox.showerror("Error", "Selected PDF could not be found.")
         return
 
 
@@ -81,8 +84,8 @@ def main():
     df_10_to_29.to_csv(os.path.join(OUTPUT_DIR, "students_10_to_29_999.csv"), index=False)
 
     messagebox.showinfo(
-        "Success",
-        "CSV files created successfully!"
+    "Success",
+    "CSV files created on your Desktop!"
     )
 
 # GUI Window
@@ -94,15 +97,26 @@ root.resizable(False, False)
 label = tk.Label(root, text="Renaissance Report Parser", font=("Arial", 14))
 label.pack(pady=15)
 
-status_label = tk.Label(root, text="Processing report...\nPlease wait.")
-status_label.pack(pady=10)
+def select_pdf_and_run():
+    global PDF_NAME
 
-def start():
+    file_path = filedialog.askopenfilename(
+        title="Select Renaissance PDF",
+        filetypes=[("PDF Files", "*.pdf")]
+    )
+
+    if not file_path:
+        return
+
+    PDF_NAME = file_path
     main()
 
-root.after(0, start)
+#status_label = tk.Label(root, text="Processing report...\nPlease wait.")
+status_label = tk.Label(root, text="Select a Renaissance PDF to begin")
+status_label.pack(pady=10)
+button = tk.Button(root, text="Select PDF", command=select_pdf_and_run)
+button.pack(pady=10)
 root.mainloop()
-
 
 #if __name__ == "__main__":
     #main()
