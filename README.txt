@@ -1,24 +1,12 @@
 RENAISSANCE REPORT PARSER
 
 **STEP 1:**
-Download the Renaissance report.
+Download the Renaissance Summary Diagnostic Report.
 
 **STEP 2:**
-Save it in this folder, seareader-parser-master
+Double click student_parser and select the report you just downloaded
 
-**STEP 3:**
-Rename the file exactly to:
-
-renaissance_report.pdf
-
-**STEP 4:**
-Double-click the student_parser app.
-**If** clicking the app does not work try this:
-**Press:** Command + Space bar
-**Type:** Terminal 
-**Press:** Enter
-**Type:** python3 student_parser.py
-**Press:** Enter
+The following files will be downloaded onto your desktop:
 
 OUTPUT FILES:
 - students_30_plus.csv
