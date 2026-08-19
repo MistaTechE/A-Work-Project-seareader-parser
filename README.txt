@@ -23,7 +23,7 @@ Students with:
 
 
 
-Tech Only:
+Tech Only (Mac):
 To install python: python3 -m pip install pyinstaller
 cd /Volumes/NONAME/seareader-parser-master
 python3 -m PyInstaller --windowed --onefile student_parser.py
