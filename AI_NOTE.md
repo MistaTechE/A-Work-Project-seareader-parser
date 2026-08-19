@@ -30,4 +30,4 @@ didn't try to make the GUI fancy just simple, I didn't remove evidence
 of ChatGPT use. I wanted a working tool ASAP and didn't want to waste minutes
 on cleaning up something that none of the users would ever see. I only 
 prioritized getting the tool to my coworkers ASAP, saving them manual work at 
-a critical time of the year. 
+a critical time of the year.
