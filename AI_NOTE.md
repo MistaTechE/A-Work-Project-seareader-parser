@@ -23,3 +23,11 @@ significantly slowed the tool down. I was concerned the user might close
 the tool while it was still processing the data due to believing it was 
 frozen. I identified the try/except blocks as contributing to the slowdown, 
 commented them out, and confirmed the tool ran much faster without them.
+
+**What Didn't Matter**
+I didn't remove old commented out code, I didn't create test cases, I 
+I didn't try to make the GUI fancy just simple, I didn't remove evidence
+of ChatGPT use. I wanted a working tool ASAP and didn't want to waste minutes
+on cleaning up something that none of the users would ever see. I only 
+prioritized getting the tool to my coworkers ASAP, saving them manual work at 
+a critical time of the year. 
