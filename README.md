@@ -24,17 +24,17 @@ machines. No real student data was committed to Git.
 - "Actual Points" is the correct field to sort students
 - Dashes (`-`) in a field mean no data, not zero
 
-**Data Issues I Noticed**
+**Data Issues I Noticed:**
 - Some rows had missing percentage fields represented as dashes, breaking the
 - initial parsing pattern until handled explicitly
 - Name formatting was varied and matching missed valid students
 - App was slow and needed adjustment to avoid users viewing it as frozen
 
-**What I Would Do Next With More Time**
+**What I Would Do Next With More Time:**
 Scrape homerooms to the csvs and generate reward certificates for each student on
 the 30+ csv in folders by homeroom.
 
-**Constraints**
+**Constraints:**
 There is no private, confidential, client, employer, or personal data in
 this work. The synthetic data is very limited, but easy to reproduce.
 Student names and decimal numbers are the only two data points being scraped 
